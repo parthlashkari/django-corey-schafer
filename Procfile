@@ -1,0 +1,1 @@
+web: gunicorn django_corey_schafer.wsgi
