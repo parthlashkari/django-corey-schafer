@@ -1,18 +1,30 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base1.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 	<!-- <h1> Hello this is my second django site project</h1> -->
-
+	<div class="container-fluid" style="margin-left:23%;">
 	<div class = 'content-section' >
-		<form action = "" method = "POST">{% csrf_token %}
-			<fieldset class ="form-group">
+		<form action = "" method = "POST" enctype="multipart/form-data" >{% csrf_token %}
+			
+
+			<fieldset class ="form-group"  >
 				<legend class ="border-bottom mb-4">
-					Blog Post
+					Create Post
 				</legend>
+
+				<legend class ="border-bottom mb-4">
+					<div class="alert alert-info" role="alert">
+			   <small> &#128400;Just for fun.You can choose either image or video or none of these to upload your post.Thanks&#128536;</small>
+			</div>
+				</legend>
+
 				<!-- {{ form.as_p }} we were using this coding block when we dont use crispy forms -->
 				{{ form|crispy }}
 
+
+
 			</fieldset>
+			
 			<div class="form-group">
 			<button class="btn btn-outline-info" type = "submit">Post</button>	
 			</div>	
@@ -20,5 +32,6 @@
 		
 
 	</div>
+</div>
 
 {% endblock content %}

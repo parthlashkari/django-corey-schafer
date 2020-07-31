@@ -1,0 +1,292 @@
+<!-- i have created this base2.html other than base.html becoz i don't want to show home and login link on navbar portion from base.html on login page.  -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <script src="https://kit.fontawesome.com/90d6439bb3.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+    
+    {% if title %} 
+        <title> Django-Blog-{{ title }} </title>
+    {% else %}
+        <title> Django-Blog</title>
+    {% endif %}
+</head>
+<body>
+        {% if user.is_authenticated %}
+        <!-- <h1 class="text-center mb-4"  style="color:green;">Apan Machayenge &#128540;</h1> -->
+        {% endif %}
+        <header class="site-header">
+          <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+            <div class="container">
+              <a class="navbar-brand mr-4" href="{% url 'blog:blog-home' %}">ParthBook</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="navbar-nav mr-auto">
+                  <!-- If u wanna do hard coding or give absolute path in href then u cando like this but it is not recommended at all just for learning
+                  <a class="nav-item nav-link" href="/blog/home">Home</a>
+                  <a class="nav-item nav-link" href="/blog/about">About</a>
+                  -->
+                    <!-- <a class="nav-item nav-link" href="{% url 'blog:blog-home' %}">Home</a> -->
+                    <!-- <a class="nav-item nav-link" href="{% url 'blog:blog-about' %}">About</a> -->
+                </div>
+                <!-- Navbar Right Side -->
+                <div class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <a class="nav-item nav-link" href="{% url 'blog:post-create' %}">New Post</a>
+                        <a class="nav-item nav-link" href="{% url 'users:profile-page' %}">Profile</a>
+                        <a class="nav-item nav-link" href="{% url 'blog:post_favorite_list' %}">Favorites</a>
+                        <a class="nav-item nav-link" href="{% url 'logout-page' %}">Logout</a>
+                    {% else %}
+                      <!-- <a class="nav-item nav-link" href="{% url 'login-page' %}">Login</a> -->
+                      <a class="nav-item nav-link" href="{% url 'users:register-page' %}">Register</a>
+                     {% endif %}
+                </div>
+              </div>
+            </div>
+          </nav>
+        </header>
+        <main role="main" class="container">
+          <div class="row">
+            <div class="col-md-8">
+
+                <!-- <h1> this is base of blog templates</h1> -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+
+                    {% endfor %}
+                {% endif %}
+              {% block content %}{% endblock content %}
+            </div>
+            
+            </div>
+          </div>
+        </main>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <footer class="kilimanjaro_area">
+        <!-- Top Footer Area Start -->
+        <div class="foo_top_header_one section_padding_100_70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="kilimanjaro_part">
+                            <h5>About Me</h5>
+                            <p>In this site i have tried my best to give myself the immense pleasure that you can't imagine . so don't bother.&#128513;</p>
+                            <p>I have created this site with the help of many youtube tutorials and udemy courses that you can't imagine, yeah again.So just don't bother.&#128514;</p>
+                        </div>
+                        <div class="kilimanjaro_part m-top-15">
+                            <h5>Social Links</h5>
+                            <ul class="kilimanjaro_social_links">
+                                <!-- <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i> <img class="img-fluid" src="{% static 'footer_images/fb.png' %}" alt="" height="50" width="50"></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i><img class="img-fluid" src="{% static 'footer_images/twitter.png' %}" alt="" height="50" width="50"></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i> <img class="img-fluid" src="{% static 'footer_images/pinterest.png' %}" alt="" height="50" width="50"></a></li>
+                                <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i> <img class="img-fluid" src="{% static 'footer_images/youtube.png' %}" alt="" height="70" width="70"></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i> <img class="img-fluid" src="{% static 'footer_images/linkedin.png' %}" alt="" height="60" width="60"></a></li> -->
+
+                                <li><a href="#"><i class="fa fa-facebook fa-lg" aria-hidden="true" style="color:blue;"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter fa-lg" aria-hidden="true" style="color:blue;"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest fa-lg" aria-hidden="true" style="color:red;"></i></a></li>
+                                <li><a href="#"><i class="fa fa-youtube fa-lg" aria-hidden="true" style="color:red;"></i> </a></li>
+                                <li><a href="#"><i class="fa fa-linkedin fa-lg" aria-hidden="true" style="color:blue;"></i> </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="kilimanjaro_part">
+                            <h5>Technologies Used</h5>
+                            <ul class=" kilimanjaro_widget">
+                                <li><a href="#">Django</a></li>
+                                <li><a href="#">Python</a></li>
+                                <li><a href="#">Javascript</a></li>
+                                <li><a href="#">Html</a></li>
+                                <li><a href="#">CSS</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="kilimanjaro_part m-top-15">
+                            <h5>Important Links</h5>
+                            <ul class="kilimanjaro_links">
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Terms & Conditions</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>About Licences</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Help & Support</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Careers</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Privacy Policy</a></li>
+                                <li><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Community & Forum</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="kilimanjaro_part">
+                            <h5>Latest News</h5>
+                            <div class="kilimanjaro_blog_area">
+                                <div class="kilimanjaro_thumb">
+                                <img class="img-fluid" src="{% static 'footer_images/pic3.jpg' %}" alt="">
+
+                                </div>
+                                <a href="#">Leh Ladakh Trip unchecked</a>
+                                <p class="kilimanjaro_date">21 Jan 2018</p>
+                                <p>Ye bhi pata nai kab possible ho payegi</p>
+                            </div>
+                            <div class="kilimanjaro_blog_area">
+                                <div class="kilimanjaro_thumb">
+                                <img class="img-fluid" src="{% static 'footer_images/pic2.jpg' %}" alt="">
+                                </div>
+                                <a href="#">Manali Trip Checked</a>
+                                <p class="kilimanjaro_date">5 June 2018</p>
+                                <p>Next time spititvalley jayege don't mind spellings and all</p>
+                            </div>
+                            <div class="kilimanjaro_blog_area">
+                                <div class="kilimanjaro_thumb">
+                                <img class="img-fluid" src="{% static 'footer_images/pic1.jpg' %}" alt="">
+                                </div>
+                                <a href="#">Goa Trip Pending</a>
+                                <p class="kilimanjaro_date">23 July 2020 ....</p>
+                                <p>Don't know when will this dream come true.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="kilimanjaro_part">
+                            <h5>Contact Me</h5>
+                            <div class="kilimanjaro_single_contact_info">
+                                <!-- <h5>Phone :<small>&nbsp+91-8770126828</small></h5> -->
+                                <h5><i class="fas fa-mobile-alt fa-lg mr-3" style="color:blue;"></i><small>&nbsp:&nbsp+91-8770126828</small></h5>
+                                
+                            </div>
+                            <div class="kilimanjaro_single_contact_info">
+                                <!-- <h5>Email&nbsp:<small>&nbspparthlashkari111@gmail.com</small></h5> -->
+                                <h5><i class="far fa-envelope fa-lg mr-2" style="color:blue;"></i><small>:&nbspparthlashkari111@gmail.com</small></h5>
+                                
+                            </div>
+                        </div>
+                        <!-- <div class="kilimanjaro_part">
+                            <h5>Latest Works</h5>
+                            <div class="kilimanjaro_works">
+                                <a class="kilimanjaro_works_img" href="img/gallery/1.jpg"><img src="img/gallery/1.jpg" alt=""></a>
+                                <a class="kilimanjaro_works_img" href="img/gallery/4.jpg"><img src="img/gallery/4.jpg" alt=""></a>
+                                <a class="kilimanjaro_works_img" href="img/gallery/5.jpg"><img src="img/gallery/5.jpg" alt=""></a>
+                                <a class="kilimanjaro_works_img" href="img/gallery/7.jpg"><img src="img/gallery/7.jpg" alt=""></a>
+                                <a class="kilimanjaro_works_img" href="img/gallery/10.jpg"><img src="img/gallery/10.jpg" alt=""></a>
+                                <a class="kilimanjaro_works_img" href="img/gallery/11.jpg"><img src="img/gallery/11.jpg" alt=""></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom Area Start -->
+        <div class=" kilimanjaro_bottom_header_one section_padding_50 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- <p>© All Rights Reserved by <a href="#">Webublogoverflow.blogspot -(with all love)<i class="fa fa-love"></i></a></p> -->
+                        <p>© All Rights Reserved by <a href="#">Devil Parth<i class="fa fa-love"></i></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+        
+
+    
+    
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $('.reply-btn').click(function() {
+            $(this).parent().parent().next('.replied-comments').fadeToggle()
+        });
+
+        $(function(){
+            setTimeout(function(){
+                    $('.alert').slideUp(2000);
+            },5000);
+        });
+
+
+    </script>
+
+    <script>
+    /* To Disable Inspect Element */
+    $(document).bind("contextmenu",function(e) {
+     e.preventDefault();
+    });
+
+    $(document).keydown(function(e){
+        if(e.which === 123){
+           return false;
+        }
+    });
+    </script>
+
+
+    <script>
+    document.onkeydown = function(e) {
+    if(event.keyCode == 123) {
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'E'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'H'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'A'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'F'.charCodeAt(0)){
+    return false;
+    }
+    if(e.ctrlKey && e.keyCode == 'E'.charCodeAt(0)){
+    return false;
+    }
+    }
+    </script>
+
+
+</body>
+</html>

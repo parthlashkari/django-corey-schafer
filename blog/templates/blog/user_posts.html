@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base1.html' %}
 {% block content %}
 	<h1 class="mb-3">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1> <!-- to get the username from the url we use this coding block {{ view.kwargs.username }} and this {{ page_obj.paginator.count }}) means that how many posts this user posted till now.-->
 	{% for post in posts %}
@@ -12,6 +12,39 @@
 		    </div>
 		    <h2><a class="article-title" href="{% url 'blog:post-detail' post.id %}">{{ post.title }}</a></h2>
 		    <p class="article-content">{{ post.content }}</p>
+		    <!-- <img src="{{ post.image.url }}" class="img-fluid" alt="Responsive image"> -->
+
+	<!-- 	    {% if post.video %}
+    <video width="600" height="400" controls>
+        <source src="{{ post.video.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+
+{% else %}
+
+    <img src="{{ post.image.url }}" class="img-fluid" alt="Responsive image">
+
+{% endif %} -->
+			
+
+			{% if not post.video and  post.image == 'default1.jpg' %}
+		    
+
+		    {% elif post.video and post.image %}
+		    
+				<video width="600" height="400" controls>
+					<source src="{{ post.video.url }}" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+
+
+			{% else %}
+
+
+			    <img src="{{ post.image.url }}" class="img-fluid" alt="Responsive image">
+			{% endif %}
+
 		  </div>
 		</article>
 	{% endfor %}

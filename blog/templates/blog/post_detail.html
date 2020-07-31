@@ -1,4 +1,5 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base1.html' %}
+{% load crispy_forms_tags %}
 {% block content %}	
 	<article class="media content-section">
 		<img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
@@ -15,7 +16,128 @@
 	    </div>
 	    <h2 class="article-title">{{ object.title }}</h2>
 	    <p class="article-content">{{ object.content }}</p>
+	    <!-- <img src="{{ object.image.url }}" class="img-fluid" alt="Responsive image"> -->
+	<!--     {% if object.video %}
+    <video width="600" height="400" controls>
+        <source src="{{ object.video.url }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+
+{% else %}
+
+    <img src="{{ object.image.url }}" class="img-fluid" alt="Responsive image">
+{% endif %} -->
+	    
+		{% if not object.video and  object.image == 'default1.jpg' %}
+	    
+
+	    {% elif object.video and object.image %}
+	    
+			<video width="600" height="400" controls>
+				<source src="{{ object.video.url }}" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+
+
+		{% else %}
+
+
+		    <img src="{{ object.image.url }}" class="img-fluid" alt="Responsive image">
+		{% endif %}
+
+		    
 	  </div>
 	</article>
+	{% if request.user.is_authenticated %}
+	{{ total_likes }} Like{{ total_likes|pluralize }}
+	<form action="{% url 'blog:like_post' %}" method="POST" >{% csrf_token %}
+		{% if is_liked %}
+			<!-- <button  type="submit" name="post_id" value="{{ object.id }}" class="btn btn-danger">Dislike</button> -->
+			<button  type="submit" name="post_id" value="{{ object.id }}" class="btn btn-outline-danger"><i class="fas fa-thumbs-down fa-lg"></i></button>
+		{% else %}
+			<button  type="submit" name="post_id" value="{{ object.id }}" class="btn btn-outline-primary"><i class="fas fa-thumbs-up fa-lg ml-1"></i></button>
+			<!-- <button  type="submit" name="post_id" value="{{ object.id }}" class="btn btn-primary">Like</button> -->
+		{% endif %}
+		</form>
+		{% endif %}
+
+
+	
+	<hr>
+
+
+	<div id="favorite-section">
+		{% if is_favorite %}
+			<a href="{% url 'blog:favorite_post' pk=object.pk %}">
+				<i class="fas fa-heart fa-lg " style="color:red !important;" ><small class="ml-1" style="color:black !important;,font-style: helvetica;">Favorite</small></i>
+			</a>
+		{% else %}
+			<a href="{% url 'blog:favorite_post' pk=object.pk %}">
+			<i class="far fa-heart fa-lg" style="color:red !important;"></i>
+			</a>
+		{% endif %}
+	</div>
+
+	<br>
+	<br>
+	
+	{% if not object.restrict_comments %}
+	<div class="main-comment-section">
+		<div class="container-fluid mt-2">
+			<div class="form-group row">
+				<form  method="POST" >{% csrf_token %}
+					{{ comment_form|crispy }}
+					<i class="fa fa-comment-o fa-lg btn btn-outline-success" aria-hidden="true"></i>
+					{% if request.user.is_authenticated %}
+						<input type="submit" value="Post Comment" class="btn btn-outline-success">
+					{% else %}
+						<input type="submit" value="Post Comment" class="btn btn-outline-success" disabled>
+					{% endif %}
+				</form>
+			</div>
+		</div>
+
+
+		{{ comments.count }} Comment{{ comments|pluralize }}
+		{% for comment in comments %}
+		<blockquote class="blockquote">
+			<p class="mb-0"><small>{{ comment.comment }}</small></p>
+			<footer class="blockquote-footer">
+				<small> by <cite title="Source Title">{{ comment.user|capfirst }}</cite></small>
+				<i class="fa fa-comment-o fa-lg ml-1 btn btn-outline-dark btn-sm" aria-hidden="true"></i>
+				<button type="button" name="button" class="reply-btn btn btn-outline-dark btn-sm ml-0">
+					Reply
+				</button>
+			</footer>
+		</blockquote>
+
+		<div class="replied-comments container mt-2" style="display:none;">
+			{% for reply in comment.replies.all %}
+				<blockquote class="blockquote">
+					<p class="mb-0"><small>{{ reply.comment }}</small></p>
+					<footer class="blockquote-footer">
+						<small>by <cite title="Source Title">{{ reply.user|capfirst }}</cite></small>
+					</footer>
+				</blockquote>
+			{% endfor %}
+			<div class="form-group row">
+				<form  method="POST" >{% csrf_token %}
+					<input type="hidden" name="comment_id" value="{{ comment.id }}">
+					{{ comment_form|crispy }}
+					{% if request.user.is_authenticated %}
+						<input type="submit" value="Post Reply" class="btn btn-outline-success">
+					{% else %}
+						<input type="submit" value="Post Reply" class="btn btn-outline-success" disabled>
+					{% endif %}
+				</form>	
+			</div>
+		</div>
+
+		{% endfor %}
+
+
+	</div>
+	{% endif %}
 {% endblock content %}
 

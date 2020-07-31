@@ -1,10 +1,10 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base4.html' %}
 {% block content %}
 	<!-- <h1> Hello this is my second django site project</h1> -->
-	<h2>You have been logged out.</h2>
+	<h2>Thanks for spending time with me. See you soon&#128521;</h2>
 	<div class="border-top pt-3">
 		<small class = "text-muted">
-			<a  href="{% url 'login-page' %}"> Log In Again </a>
+			<button type="submit" value="Log In Again" class="btn btn-outline-primary"><a  href="{% url 'login-page' %}">Wanna Login Again?</a></button>
 		</small>
 	</div>
 {% endblock content %}

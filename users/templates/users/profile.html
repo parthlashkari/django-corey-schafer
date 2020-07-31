@@ -1,8 +1,9 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base1.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 	<!-- <h1> Hello this is my second django site project</h1> -->
 	<!-- <h1>{{ user.username }}</h1> -->
+		<div class="container-fluid" style="margin-left: 23%;">
 	    <div class="content-section">
       <div class="media">
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
@@ -12,7 +13,7 @@
         </div>
       </div>
       <!-- FORM HERE -->
-      <form action = "" method = "POST" enctype="multipart/form-data">{% csrf_token %}
+      <form action = "" method = "POST" enctype="multipart/form-data" >{% csrf_token %}
 		<fieldset class ="form-group">
 			<legend class ="border-bottom mb-4">
 				Profile Info
@@ -27,4 +28,5 @@
 		</div>	
 	</form>
     </div>
+</div>
 {% endblock content %}

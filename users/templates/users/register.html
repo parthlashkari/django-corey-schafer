@@ -1,28 +1,73 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base3.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
 	<!-- <h1> Hello this is my second django site project</h1> -->
-
+	<div class="container-fluid mt-4" style="margin-left: 25%;">
 	<div class = 'content-section' >
-		<form action = "" method = "POST">{% csrf_token %}
-			<fieldset class ="form-group">
+		<div class="container-fluid" >
+			<div class="row ml-1">
+				<div class="col md-6">
+		<form action = "" method = "POST" >{% csrf_token %}
+			<fieldset class ="form-group" >
 				<legend class ="border-bottom mb-4">
-					Join Today
+					Join ParthBook Today
 				</legend>
 				<!-- {{ form.as_p }} we were using this coding block when we dont use crispy forms -->
+				
+
 				{{ form|crispy }}
 
+				
+
+				
 			</fieldset>
 			<div class="form-group">
-			<button class="btn btn-outline-info" type = "submit"> Sign Up</button>	
+			<button class="btn btn-primary" type = "submit"> Sign Up</button>	
 			</div>	
+				</div>
+
+				<div class="ml-4" style=" 
+	  border-left: 2px solid black;
+	  height: 800px; position: relative;">
+				  	<span style="position: absolute;
+	  top: 50%;
+	  transform: translate(-50%, -50%);
+	  background-color: #f1f1f1;
+	  border: 1px solid #ccc;
+	  border-radius: 50%;
+	  padding: 8px 10px;">OR</span>
+	  			</div>
+
+	  			<div class="col md-6">
+	  				<p class="h4 text-center">Register With:</p>
+				
+				<ul class="text-center  " style="margin-top: 300px;" >
+					<li ><a href="{% url 'social:begin' 'github' %}">
+						<button type="button" name="button" class="btn btn-dark mr-1 mb-2" ><i class="fa fa-github fa-fw mr-1"></i>Log In With Github</button>
+					</a></li>
+
+					<li><a href="{% url 'social:begin' 'google-oauth2' %}">
+						<button type="button" name="button" class="btn btn-danger mr-1 mb-2" ><i class="fa fa-google fa-fw mr-1"></i>Log In With Google+</button>
+					</a></li>
+
+					<li><a href="{% url 'social:begin' 'google-oauth2' %}">
+						<button type="button" name="button" class="btn btn-primary mb-2" ><i class="fa fa-facebook fa-fw mr-1"></i>Log In With Facebook</button>
+					</a></li>
+
+				</ul>
+			</div>
+
+		
 		</form>
+	</div>
+</div>
 		<div class="border-top pt-3">
 			<small class = "text-muted">
-				Already Have An Account? <a class = "ml-2" href="{% url 'login-page' %}"> Sign In </a>
+				Already Have An Account? <a class = "ml-2" href="{% url 'login-page' %}"><button class="btn btn-info btn-sm"> Sign In </button></a>
 			</small>
 		</div>
 
 	</div>
+</div>
 
 {% endblock content %}

@@ -35,7 +35,9 @@ urlpatterns = [
         name="password_reset_complete"),
     path('users/',include('users.urls')),
     #path('profile',user_views.profile, name="profile-page"),
+    path('',include('blog.urls')),
     path('blog/',include('blog.urls')),
+    path('oauth/', include('social_django.urls', namespace="social")),
 ] #  + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) either u could do like this when ur settings.DEBUG == True by default or
 
 if settings.DEBUG:

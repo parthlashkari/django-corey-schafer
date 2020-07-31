@@ -1,31 +1,84 @@
-{% extends 'blog/base.html' %}
+{% extends 'blog/base2.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
+<!-- {% load static %} -->
 	<!-- <h1> Hello this is my second django site project</h1> -->
+	
 
-	<div class = 'content-section' >
-		<form action = "" method = "POST">{% csrf_token %}
-			<fieldset class ="form-group">
+
+	<div class="container-fluid mt-4" style="margin-left: 25%;">
+	<div class = 'content-section'>
+		<div class="container-fluid ">
+			<div class="row ml-1">
+				<div class="col md-4">
+		<form action = "" method = "POST" >{% csrf_token %}
+			<fieldset class ="form-group" >
 				<legend class ="border-bottom mb-4">
-					Log In
+					Sign in manually
 				</legend>
 				<!-- {{ form.as_p }} we were using this coding block when we dont use crispy forms -->
 				{{ form|crispy }}
 
 			</fieldset>
 			<div class="form-group">
-			<button class="btn btn-outline-info" type = "submit">Login</button>	
+			<button class="btn btn-primary" type = "submit">Login</button>	
 			<small class="text-muted ml-2">
 				<a href="{% url 'password_reset' %}">Forgot Password?</a>
 			</small>
 			</div>	
+
+				</div>
+			<!-- <p>-- OR --</p> -->
+			<!-- <div class="mb-2" style="width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center">
+			  <span style="font-size: 20px; background-color: #F3F5F6; padding: 0 5px;">
+			    Or Login From
+			  </span>
+			</div> -->
+			<div class="ml-4" style=" 
+  border-left: 2px solid black;
+  height: 300px; position: relative;">
+			  	<span style="position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;">OR</span>
+  			</div>
+			
+			<div class="col md-4 ml-3">
+				
+				<ul class="text-center  " style="margin-top: 85px;" >
+					<li ><a href="{% url 'social:begin' 'github' %}">
+						<button type="button" name="button" class="btn btn-dark mr-1 mb-2" ><i class="fa fa-github fa-fw mr-1"></i>Log In With Github</button>
+					</a></li>
+
+					<li><a href="{% url 'social:begin' 'google-oauth2' %}">
+						<button type="button" name="button" class="btn btn-danger mr-1 mb-2" ><i class="fa fa-google fa-fw mr-1"></i>Log In With Google+</button>
+					</a></li>
+
+					<li><a href="{% url 'social:begin' 'google-oauth2' %}">
+						<button type="button" name="button" class="btn btn-primary mb-2" ><i class="fa fa-facebook fa-fw mr-1"></i>Log In With Facebook</button>
+					</a></li>
+
+				</ul>
+			</div>
+			
+			<!-- <div> -->
 		</form>
+			</div>
+		</div>
 		<div class="border-top pt-3">
 			<small class = "text-muted">
-				Need An Account? <a class = "ml-2" href="{% url 'users:register-page' %}"> Sign Up Now </a>
+				Need An Account? <a class = "ml-2" href="{% url 'users:register-page' %}"><button class="btn btn-info btn-sm"> Sign Up Now </button></a>
 			</small>
 		</div>
 
-	</div>
+	</div> 
+</div>
+
+
+
+	
 
 {% endblock content %}

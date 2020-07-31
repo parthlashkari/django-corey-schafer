@@ -11,9 +11,38 @@
 		    </div>
 		    <h2><a class="article-title" href="{% url 'blog:post-detail' post.id %}">{{ post.title }}</a></h2>
 		    <p class="article-content">{{ post.content }}</p>
-		  </div>
+		    <!-- <img src="{{ post.image.url }}" class="img-fluid" alt="Responsive image"> -->
+		    {% if not post.video and  post.image == 'default1.jpg' %}
+		    
+
+		    {% elif post.video and post.image %}
+		    
+				<video width="600" height="400" controls>
+					<source src="{{ post.video.url }}" type="video/mp4">
+					Your browser does not support the video tag.
+				</video>
+
+				
+
+
+			{% else %}
+
+
+			    <img src="{{ post.image.url }}" class="img-fluid" alt="Responsive image">
+
+			
+
+			{% endif %}
+
+			
+
+
+
+
+		</div>
 		</article>
 	{% endfor %}
+
 	{% if is_paginated %}
 
 		{%if page_obj.has_previous %}
