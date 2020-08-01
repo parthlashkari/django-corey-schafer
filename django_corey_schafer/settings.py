@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
     'blog.authentication.EmailAuthbackend',
 ]
@@ -210,6 +211,10 @@ SOCIAL_AUTH__KEY = os.environ.get('SOCIAL_AUTH__KEY')
 SOCIAL_AUTH_GITHUB_KEY = os.environ.get('SOCIAL_AUTH_GITHUB_KEY') 
 
 SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('SOCIAL_AUTH_GITHUB_SECRET')
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_KEY')
+
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_SECRET')
 
 EMAIL_BACKEND =  'django.core.mail.backends.smtp.EmailBackend'
 
