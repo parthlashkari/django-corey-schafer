@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 
     'social_django',
 
-    # 'whitenoise.runserver_nostatic',
+    'whitenoise.runserver_nostatic',
     #'users',
     #'blog',
 ]
