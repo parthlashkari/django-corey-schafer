@@ -58,7 +58,7 @@
 		</header>
 		<main role="main" class="container">
 		  <div class="row">
-		    <div class="col-md-8 col-xs-4">
+		    <div class="col-md-8 col-xs-8">
 
 		    	<!-- <h1> this is base of blog templates</h1> -->
 		    	{% if messages %}
@@ -71,7 +71,7 @@
 		    	{% endif %}
 		      {% block content %}{% endblock content %}
 		    </div>
-		    <div class="col-md-4">
+		    <div class="col-md-4 col-xs-4">
 		    	{% if user.is_authenticated %}
 		      <div class="content-section">
 		        <h5 class="alert alert-success alert-heading">Welcome To ParthBook &#128519;</h5>
