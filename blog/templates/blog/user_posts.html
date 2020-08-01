@@ -2,7 +2,7 @@
 {% block content %}
 	<h1 class="mb-3">Posts by {{ view.kwargs.username }} ({{ page_obj.paginator.count }})</h1> <!-- to get the username from the url we use this coding block {{ view.kwargs.username }} and this {{ page_obj.paginator.count }}) means that how many posts this user posted till now.-->
 	{% for post in posts %}
-		<article class="media content-section">
+		<article class="media content-section col-xs-6">
 			<img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
 		  <div class="media-body">
 		    <div class="article-metadata">
@@ -33,11 +33,14 @@
 
 		    {% elif post.video and post.image %}
 		    
-				<video width="600" height="400" controls>
+				<!-- <video width="600" height="400" controls>
 					<source src="{{ post.video.url }}" type="video/mp4">
 					Your browser does not support the video tag.
-				</video>
+				</video> -->
 
+				<div class="embed-responsive embed-responsive-16by9">
+				  <iframe class="embed-responsive-item" src="{{ post.video.url }}" allowfullscreen></iframe>
+				</div>
 
 			{% else %}
 
