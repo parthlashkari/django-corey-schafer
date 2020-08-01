@@ -27,8 +27,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG_VALUE = os.environ.get('DEBUG_VALUE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['myfirstdynamicdjangowebsite.herokuapp.com']
 # ALLOWED_HOSTS = []
@@ -124,6 +124,10 @@ DATABASES = {
     }
 }
 
+import dj_database_url 
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
