@@ -114,19 +114,33 @@ WSGI_APPLICATION = 'django_corey_schafer.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Parth',
+#         'USER': 'postgres',
+#         'PASSWORD':os.environ.get('POSTGRESQL_PASSWORD'),
+#         'HOST': 'myfirstdynamicdjangowebsite.herokuapp.com',
+#         'PORT': 5432
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Parth',
-        'USER': 'postgres',
-        'PASSWORD':os.environ.get('POSTGRESQL_PASSWORD'),
-        'HOST': 'myfirstdynamicdjangowebsite.herokuapp.com'
+        'NAME': 'd5b7rpvui5218t',
+        'USER': 'pcovgxmoxrleau',
+        'PASSWORD':df06a09f8d7b2682a72af71b99c94ac7d8b1cc68eb8aeb86ed8184958e97ef4b,
+        'HOST': 'ec2-34-233-226-84.compute-1.amazonaws.com',
+        'PORT': 5432
     }
 }
 
+# postgres://pcovgxmoxrleau:df06a09f8d7b2682a72af71b99c94ac7d8b1cc68eb8aeb86ed8184958e97ef4b@ec2-34-233-226-84.compute-1.amazonaws.com:5432/d5b7rpvui5218t
+
 import dj_database_url 
 
-db_from_env = dj_database_url.config()
+db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
