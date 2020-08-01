@@ -27,8 +27,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG_VALUE = os.environ.get('DEBUG_VALUE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ['myfirstdynamicdjangowebsite.herokuapp.com', 'localhost:8000']
 # ALLOWED_HOSTS = []
