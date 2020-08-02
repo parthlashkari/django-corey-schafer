@@ -129,11 +129,11 @@ WSGI_APPLICATION = 'django_corey_schafer.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DJANGO_DATABAE_NAME'),
-        'USER': os.environ.get('DJANGO_DATABAE_USER'),
-        'HOST': os.environ.get('DJANGO_DATABAE_HOST'),
+        'NAME': os.environ.get('DJANGO_DATABASE_NAME'),
+        'USER': os.environ.get('DJANGO_DATABASE_USER'),
+        'HOST': os.environ.get('DJANGO_DATABASE_HOST'),
         'PORT': 5432,
-        'PASSWORD': os.environ.get('DJANGO_DATABAE_PASSWORD')
+        'PASSWORD': os.environ.get('DJANGO_DATABASE_PASSWORD')
     }
 }
 
