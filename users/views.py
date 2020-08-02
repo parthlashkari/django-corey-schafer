@@ -68,7 +68,7 @@ class SignUpView(View):
 			})
 			user.email_user(subject, message)
 
-			messages.info(request, ('Please Confirm your email to complete registration.'))
+			messages.info(request, ('Please Confirm your email to complete registration. A confirmation link has been sent at your provided email address.'))
 
 			return redirect('login-page')
 
