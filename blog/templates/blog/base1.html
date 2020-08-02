@@ -29,6 +29,9 @@
 		<header class="site-header">
 		  <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
 		    <div class="container">
+                <a href="#" class="navbar-brand mr-1">
+                    <img src="{% static 'blog/logo.png' %}" width="40" height="40" alt="ParthBook">
+                </a>
 		      <a class="navbar-brand mr-4" href="{% url 'blog:blog-home' %}">ParthBook</a>
 		      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
 		      <span class="navbar-toggler-icon"></span>
@@ -49,6 +52,9 @@
 		        		<a class="nav-item nav-link" href="{% url 'users:profile-page' %}">Profile</a>
 		        		<a class="nav-item nav-link" href="{% url 'blog:post_favorite_list' %}">Favorites</a>
 		        		<a class="nav-item nav-link" href="{% url 'logout-page' %}">Logout</a>
+                        <a href="{% url 'users:profile-page' %}" class="navbar-brand mr-1">
+                            <img src="{{ user.profile.image.url }}" width="40" height="40" alt="ProfilePic">
+                        </a>
 		        	{% else %}
 			          <a class="nav-item nav-link" href="{% url 'login-page' %}">Login</a>
 			          <a class="nav-item nav-link" href="{% url 'users:register-page' %}">Register</a>
