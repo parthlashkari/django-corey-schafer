@@ -17,6 +17,7 @@
 # 		except User.DoesNotExist:
 # 			return None
 
+#this file is for authenticating the user from his email id also other than his/her username.
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
