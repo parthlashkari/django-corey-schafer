@@ -31,7 +31,7 @@ DEBUG = False #we make debug false when site is in production and debug true whe
 
 
 # i have to make this settings.py file usable both for production and development but as of now this settings.py file only supports production and for localhost:8000(or development) this will not work
-ALLOWED_HOSTS = ['myfirstdynamicdjangowebsite.herokuapp.com', 'localhost:8000']
+ALLOWED_HOSTS = ['parthbookdjango.herokuapp.com', 'localhost:8000']
 # ALLOWED_HOSTS = []
 
 
@@ -122,7 +122,7 @@ WSGI_APPLICATION = 'django_corey_schafer.wsgi.application'
 #         'NAME': 'Parth',
 #         'USER': 'postgres',
 #         'PASSWORD':os.environ.get('POSTGRESQL_PASSWORD'),
-#         'HOST': 'myfirstdynamicdjangowebsite.herokuapp.com',
+#         'HOST': 'parthbookdjango.herokuapp.com',
 #         'PORT': 5432
 #     }
 # }
