@@ -202,7 +202,6 @@ LOGIN_URL = 'login-page' #that after typing https://xyz.com/login where to send 
 
 # LOGOUT_REDIRECT_URL = 'logout-page'
 
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '462519933498-5ocb9159l8f7sa03pli56buij5n246kr.apps.googleusercontent.com'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')  #these all keys and secrets are very essential to use the social authentication in the website and always keep them secret
 
