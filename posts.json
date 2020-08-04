@@ -1,3 +1,5 @@
+// i have created this file to create posts from externally(externally means from python shell in command prompt) rather than crearing posts from website. 
+
 [
   {
     "title": "My Updated Post",

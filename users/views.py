@@ -44,18 +44,18 @@ from users.tokens import account_activation_token
 # Sign Up View
 class SignUpView(View):
 	form_class = UserRegisterForm
-	template_name = 'users/register.html'
+	template_name = 'users/register.html' #this will load this specifi  template for this view. 
 
-	def get(self, request, *args, **kwargs):
+	def get(self, request, *args, **kwargs): 
 		form = self.form_class()
 		return render(request, self.template_name, {'form': form})
 
 	def post(self, request, *args, **kwargs):
-		form = self.form_class(request.POST)
+		form = self.form_class(request.POST) #request.POST will check if form has been filled and submitted and if request.FILES wiil check if photo has been choosen and submitted.
 		if form.is_valid():
 
 			user = form.save(commit=False)
-			user.is_active = False # Deactivate account till it is confirmed
+			user.is_active = False # Deactivate account till it is confirmed via email confirmation link when he registers for the first time.
 			user.save()
 
 			current_site = get_current_site(request)
@@ -74,7 +74,7 @@ class SignUpView(View):
 
 		return render(request, self.template_name, {'form': form})
 
-class ActivateAccount(View):
+class ActivateAccount(View): #this function will check that the account shoud be active or ready to use only when users click on the confirmation link sent on its email id when he registers first time.
 
 	def get(self, request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend', *args, **kwargs):
 		try:
@@ -94,7 +94,7 @@ class ActivateAccount(View):
 			messages.warning(request, ('The confirmation link was invalid, possibly because it has already been used.'))
 			return redirect('blog:blog-home')
 
-@login_required#(redirect_field_name='users/profile')
+@login_required#(redirect_field_name='users/profile') #this will check that user is logged in or not to look at his profile
 def profile(request):
 	if request.method == 'POST':
 		u_form = UserUpdateForm(request.POST, instance=request.user)

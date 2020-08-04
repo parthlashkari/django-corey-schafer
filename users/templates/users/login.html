@@ -1,3 +1,4 @@
+<!-- this line here extends means that we want to show this login page in the base2.html where {% block content %} this is written and load crispy-forms means that we want to use crsipy_forms in our html page -->
 {% extends 'blog/base2.html' %}
 {% load crispy_forms_tags %}
 {% block content %}
@@ -11,12 +12,14 @@
 		<div class="container-fluid ">
 			<div class="row ml-1">
 				<div class="col md-4">
+					<!-- this csrf token is for security purpose in django and whenever we use this form anywhere in our html pages then after form first line we have to write csrf_token always-->
 		<form action = "" method = "POST" >{% csrf_token %}
 			<fieldset class ="form-group" >
 				<legend class ="border-bottom mb-4">
 					Sign in manually
 				</legend>
 				<!-- {{ form.as_p }} we were using this coding block when we dont use crispy forms -->
+				<!-- crispy is django filter here -->
 				{{ form|crispy }}
 
 			</fieldset>
@@ -52,6 +55,7 @@
 
 				
 				<ul class="text-center  " style="margin-top: 85px;" >
+					<!-- this href means that we want to make this button special with social authentication purpose.   -->
 					<li ><a href="{% url 'social:begin' 'github' %}">
 						<button type="button" name="button" class="btn btn-dark mr-1 mb-2" ><i class="fa fa-github fa-fw mr-1"></i>Log In With Github</button>
 					</a></li>

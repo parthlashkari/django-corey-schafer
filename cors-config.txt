@@ -1,3 +1,4 @@
+<!-- this file is used for telling aws s3 file storage system that which alowed origin(means domain name of the site) and what methods we want to allow users to do like get, put, post.  -->
 <?xml version="1.0" encoding="UTF-8"?>
 <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
    <CORSRule>

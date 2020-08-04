@@ -1,3 +1,5 @@
+#this forms.py is used for making forms in the django instead of in html and fields means that which field we want to show in the form and model measn which model i want to load in my forms.
+
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm

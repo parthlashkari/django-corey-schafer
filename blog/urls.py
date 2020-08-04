@@ -1,3 +1,5 @@
+#this urls.py file connects the views and templates together in the website.
+
 from django.urls import path
 from .views import home,about, like_post, favorite_post, post_favorite_list
 from .views import (

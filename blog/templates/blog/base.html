@@ -1,4 +1,5 @@
-{% load static %}
+<!-- this load static line means we wanna use static files of django in the html page to show images or css files or js files   -->
+{% load static %} 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,17 +12,19 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- this format like {% something %} called coding blocks or jinja formats that mans we want to import django in our html page and format of loading the static files is what written in the href in which we have provided the path that from where we want to load the static files -->
     <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
 
-    
-	{% if title %} 
+    <!-- this is django if else in the html page -->
+	{% if title %}
 		<title> Django-Blog-{{ title }} </title>
 	{% else %}
 		<title> Django-Blog</title>
 	{% endif %}
 </head>
 <body>
-		{% if user.is_authenticated %}
+		<!-- if users password and login are correct that will check this user.is_authenticated does here -->
+		{% if user.is_authenticated %} 
 		<h1 class="text-center mb-4"  style="color:green;">Apan Machayenge &#128540;</h1>
 		{% endif %}
 		<header class="site-header">
@@ -66,7 +69,7 @@
 		  <div class="row">
 		    <div class="col-md-8 col-xs-4">
 
-		    	<!-- <h1> this is base of blog templates</h1> -->
+		    	<!-- this is here to show the messages like your post has been updated successfully or some error or warning in the html page from django and 'tags' means that which type of error message is erro or success or warning or info -->
 		    	{% if messages %}
 		    		{% for message in messages %}
 			    		<div class="alert alert-{{ message.tags }}">
@@ -75,6 +78,7 @@
 
 		    		{% endfor %}
 		    	{% endif %}
+		    	<!-- this line below means that what html page we want to load in our base.html -->
 		      {% block content %}{% endblock content %}
 		    </div>
 		    <div class="col-md-4 col-xs-4">
@@ -84,6 +88,7 @@
 		        
 		        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
 		        <!-- <h5 class="account-heading">{{ user.username }}</h5> -->
+		        <!-- {{ user.username }} means that we want to use inbuilt user's username in the html page -->
 		        <h5 class="h3">{{ user.username }}</h5>
 		        <p class='alert alert-primary'>Hello guys, what is up?&#128152;</p>
 		          <ul class="list-group">

@@ -1,3 +1,5 @@
+#this token file is used for sending confirmation mail to the newly registered user and making the account active after confirmation.
+
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 # from django.utils import six
 from six import text_type
