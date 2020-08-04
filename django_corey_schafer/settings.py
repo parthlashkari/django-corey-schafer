@@ -64,7 +64,7 @@ AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend', #we have to put this when using social authentication 
-    'blog.authentication.EmailAuthbackend', #this is for sending confirmation email when users first time registers
+    'blog.authentication.EmailAuthbackend', #this is for authenticating user from his registered email id also other than his/her username.
 ]
 
 MIDDLEWARE = [
